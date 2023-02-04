@@ -1,0 +1,16 @@
+FROM node:14
+
+WORKDIR /apolloexp
+
+COPY package.json /apolloexp/package.json
+COPY /api/ /apolloexp/api/
+COPY /config/ /apolloexp/config/
+COPY /extensions/ /apolloexp/extensions/
+COPY /public/ /apolloexp/public
+COPY favicon.ico /apolloexp/favicon.ico
+
+EXPOSE 3000
+
+RUN npm install
+RUN npm run build
+RUN npm run develop
